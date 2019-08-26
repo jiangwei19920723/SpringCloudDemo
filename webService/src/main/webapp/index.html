@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="/layui/layui.js"></script>
+</head>
+<body>
+    <h2 style="text-align: center">全部数据</h2>
+    <hr>
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+</body>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            elem: '#test'
+            ,url:'http://localhost:8081/hykd/data/goods/query'
+            /*,parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": 0, //解析接口状态
+                    "count": 16, //解析数据长度
+                    "data": res //解析数据列表
+                };
+            }*/
+            ,cols: [[
+                {field:'id', width:80, title: 'ID'}
+                ,{field:'create_time', title: '创建时间', sort: true}
+                ,{field:'goods_name',title: '货物名称', sort: true}
+                ,{field:'goods_type', title: '货物类型'}
+                ,{field:'goods_code', title: '货物编号'}
+                ,{field:'goods_unit', title: '单位'}
+                ,{field:'goods_factory', title: '所属工厂'}
+                ,{field:'goods_number', title: '货物数量'}
+                ,{field:'goods_price', title: '价格'}
+            ]]
+        });
+    });
+</script>
+</html>

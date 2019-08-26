@@ -1,0 +1,23 @@
+server:
+  port: 8003
+spring:
+  jackson:
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES #controller层 于web前端交互使用下划线结构
+  application:
+    name: data-Service
+  datasource:
+    url: jdbc:mysql://localhost:3306/data_service?useUnicode=true&useSSL=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update  # 第一次建表create  后面用update，要不然每次重启都会新建表
+    show-sql: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+

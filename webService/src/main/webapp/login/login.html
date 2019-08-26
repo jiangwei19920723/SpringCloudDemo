@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+    <link rel="stylesheet" href="/layui/css/layui.css">
+    <script src="/layui/layui.js"></script>
+</head>
+<body style="background-color: #2D93CA">
+    <div class="login" style="position: absolute;left: 40%;top: 30%;">
+        <h1>后台管理-登录界面</h1>
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <input class="layui-input" name="login_name" placeholder="用户名" lay-verify="required" type="text" autocomplete="off">
+            </div>
+            <div class="layui-form-item">
+                <input class="layui-input" name="password" placeholder="密码" lay-verify="required" type="password" autocomplete="off">
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn login_btn" lay-submit="" lay-filter="login" style="position: absolute;left: 10%;">登录</button>
+                <button class="layui-btn login_btn" id="register" style="position: absolute;left: 55%;">注册</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    layui.use(['jquery','layer', 'form'], function(){
+        var layer = layui.layer,
+        form = layui.form,
+        $ = layui.$;
+        //监听提交
+        form.on('submit(login)', function(data){
+            $.ajax({
+                type: "post",
+                url: 'http://localhost:8081/hykd/user/login/login',
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                data:JSON.stringify(data.field),
+                success: function (data){
+                    window.location.href = "../index.html";
+                },
+                error: function (err){
+                    layer.msg(err.responseJSON.message);
+                }
+            });
+            return false;
+        });
+        $('#register').on('click',function(){
+            window.location.href = "/register/register.html";
+            return false;
+        });
+
+    });
+</script>
+</html>
