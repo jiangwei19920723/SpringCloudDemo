@@ -1,7 +1,9 @@
 package cn.hykd.data.controller;
 
+import cn.hykd.data.client.UserClient;
 import cn.hykd.data.domain.Goods;
 import cn.hykd.data.service.GoodsService;
+import cn.hykd.userService.domain.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,8 @@ import java.util.Map;
 public class GoodsController {
     @Autowired
     private GoodsService service;
+    @Autowired
+    private UserClient userClient;
 
     @PostMapping("/add")
     public List<Goods> add(@RequestBody List<Goods> goodss) {
@@ -33,5 +37,10 @@ public class GoodsController {
     @GetMapping("/page/query")
     public List<Goods> page(){
         return null;
+    }
+
+    @GetMapping("/users")
+    public List<UserInfo> users(){
+        return userClient.list();
     }
 }
