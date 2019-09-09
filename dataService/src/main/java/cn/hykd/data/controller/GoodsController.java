@@ -16,8 +16,6 @@ import java.util.Map;
 public class GoodsController {
     @Autowired
     private GoodsService service;
-    @Autowired
-    private UserClient userClient;
 
     @PostMapping("/add")
     public List<Goods> add(@RequestBody List<Goods> goodss) {
@@ -41,6 +39,6 @@ public class GoodsController {
 
     @GetMapping("/users")
     public List<UserInfo> users(){
-        return userClient.list();
+        return service.users();
     }
 }

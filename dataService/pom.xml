@@ -42,12 +42,6 @@
       <artifactId>base</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
-
-    <dependency>
-      <groupId>cn.hykd</groupId>
-      <artifactId>userService</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 
   <build>
