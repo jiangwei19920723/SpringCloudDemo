@@ -136,3 +136,6 @@ Icon
 !**/wrapper/*.jar
 
 consul.exe
+.iml
+.idea
+.txlcn
