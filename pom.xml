@@ -24,7 +24,8 @@
         <module>userService</module>
         <module>webService</module>
         <module>zuulService</module>
-     </modules>
+        <module>tcManager</module>
+    </modules>
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud-services.version>2.1.2.RELEASE</spring-cloud-services.version>
